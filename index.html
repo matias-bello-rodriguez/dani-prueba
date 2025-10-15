@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Aduana - Registro de Mercancías</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1><i class="fas fa-box"></i> Sistema de Aduana</h1>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">
+                    <i class="fas fa-plus"></i> Registrar
+                </a>
+                <a href="lista.html" class="nav-link">
+                    <i class="fas fa-list"></i> Listar Mercancías
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form-header">
+            <h2><i class="fas fa-file-alt"></i> Registro de Mercancías Incautadas</h2>
+            <p>Complete todos los campos requeridos para registrar una nueva mercancía</p>
+        </div>
+
+        <form id="mercanciaForm" class="mercancia-form">
+            <!-- Datos Básicos -->
+            <div class="form-section">
+                <h3><i class="fas fa-info-circle"></i> Datos Básicos</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nroOrden">Nro. de Orden *</label>
+                        <input type="number" id="nroOrden" name="nroOrden" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fechaIngAlmacen">Fecha Ingreso Almacén *</label>
+                        <input type="date" id="fechaIngAlmacen" name="fechaIngAlmacen" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoMercancia">Tipo de Mercancía *</label>
+                        <select id="tipoMercancia" name="tipoMercancia" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Cigarrillos">Cigarrillos</option>
+                            <option value="Alcohol">Alcohol</option>
+                            <option value="Electrónicos">Electrónicos</option>
+                            <option value="Textiles">Textiles</option>
+                            <option value="Medicamentos">Medicamentos</option>
+                            <option value="Alimentos">Alimentos</option>
+                            <option value="Otros">Otros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoVehiculo">Tipo de Vehículo</label>
+                        <select id="tipoVehiculo" name="tipoVehiculo">
+                            <option value="">Seleccionar...</option>
+                            <option value="Camión">Camión</option>
+                            <option value="Furgón">Furgón</option>
+                            <option value="Auto">Auto</option>
+                            <option value="Motocicleta">Motocicleta</option>
+                            <option value="Barco">Barco</option>
+                            <option value="Avión">Avión</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cantidades -->
+            <div class="form-section">
+                <h3><i class="fas fa-calculator"></i> Cantidades</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="cajetillas">Cajetillas</label>
+                        <input type="number" id="cajetillas" name="cajetillas" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="kgs">Kilogramos</label>
+                        <input type="number" id="kgs" name="kgs" step="0.01" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="envasesBultos">Envases/Bultos</label>
+                        <input type="number" id="envasesBultos" name="envasesBultos" min="0">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información Regulatoria -->
+            <div class="form-section">
+                <h3><i class="fas fa-building"></i> Información Regulatoria</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="enteRegulador">Ente Regulador</label>
+                        <select id="enteRegulador" name="enteRegulador">
+                            <option value="">Seleccionar...</option>
+                            <option value="Aduana">Aduana</option>
+                            <option value="SAG">SAG</option>
+                            <option value="SII">SII</option>
+                            <option value="SERNAPESCA">SERNAPESCA</option>
+                            <option value="ISP">ISP</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="localidad">Localidad *</label>
+                        <input type="text" id="localidad" name="localidad" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="estadoMercancias">Estado de Mercancías</label>
+                        <select id="estadoMercancias" name="estadoMercancias">
+                            <option value="">Seleccionar...</option>
+                            <option value="Excelente">Excelente</option>
+                            <option value="Bueno">Bueno</option>
+                            <option value="Regular">Regular</option>
+                            <option value="Malo">Malo</option>
+                            <option value="Deteriorado">Deteriorado</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documentación -->
+            <div class="form-section">
+                <h3><i class="fas fa-file-invoice"></i> Documentación</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nroOficioOrd">Nro. Oficio/Orden</label>
+                        <input type="text" id="nroOficioOrd" name="nroOficioOrd">
+                    </div>
+                    <div class="form-group">
+                        <label for="boletaRetencion">Boleta de Retención</label>
+                        <input type="text" id="boletaRetencion" name="boletaRetencion">
+                    </div>
+                    <div class="form-group">
+                        <label for="actaIncaut">Acta de Incautación</label>
+                        <input type="text" id="actaIncaut" name="actaIncaut">
+                    </div>
+                    <div class="form-group">
+                        <label for="nroPartePolicial">Nro. Parte Policial</label>
+                        <input type="text" id="nroPartePolicial" name="nroPartePolicial">
+                    </div>
+                    <div class="form-group">
+                        <label for="nue">NUE</label>
+                        <input type="text" id="nue" name="nue">
+                    </div>
+                    <div class="form-group">
+                        <label for="denuncia">Denuncia</label>
+                        <input type="text" id="denuncia" name="denuncia">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información del Consignatario -->
+            <div class="form-section">
+                <h3><i class="fas fa-user"></i> Consignatario</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="consignatario">Consignatario</label>
+                        <input type="text" id="consignatario" name="consignatario">
+                    </div>
+                    <div class="form-group">
+                        <label for="rutDni">RUT/DNI</label>
+                        <input type="text" id="rutDni" name="rutDni">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información del Vehículo -->
+            <div class="form-section">
+                <h3><i class="fas fa-car"></i> Vehículo</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="marca">Marca</label>
+                        <input type="text" id="marca" name="marca">
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo">Modelo</label>
+                        <input type="text" id="modelo" name="modelo">
+                    </div>
+                    <div class="form-group">
+                        <label for="patente">Patente</label>
+                        <input type="text" id="patente" name="patente">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Almacenamiento y Observaciones -->
+            <div class="form-section">
+                <h3><i class="fas fa-warehouse"></i> Almacenamiento</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="ubicacionAlmacenaje">Ubicación de Almacenaje</label>
+                        <input type="text" id="ubicacionAlmacenaje" name="ubicacionAlmacenaje">
+                    </div>
+                    <div class="form-group">
+                        <label for="estadoDecare">Estado Decare</label>
+                        <select id="estadoDecare" name="estadoDecare">
+                            <option value="">Seleccionar...</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="En proceso">En proceso</option>
+                            <option value="Finalizado">Finalizado</option>
+                            <option value="Cancelado">Cancelado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="funcionarioDigitador">Funcionario Digitador</label>
+                        <input type="text" id="funcionarioDigitador" name="funcionarioDigitador">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nuevos Campos -->
+            <div class="form-section">
+                <h3><i class="fas fa-calendar-alt"></i> Información Adicional</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fechaVencimiento">Fecha de Vencimiento</label>
+                        <input type="date" id="fechaVencimiento" name="fechaVencimiento">
+                    </div>
+                    <div class="form-group">
+                        <label for="propuestaDonacion">Propuesta de Donación</label>
+                        <select id="propuestaDonacion" name="propuestaDonacion">
+                            <option value="">Seleccionar...</option>
+                            <option value="true">Sí</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Observaciones -->
+            <div class="form-section">
+                <h3><i class="fas fa-sticky-note"></i> Observaciones</h3>
+                <div class="form-group full-width">
+                    <label for="observaciones">Observaciones Generales</label>
+                    <textarea id="observaciones" name="observaciones" rows="3"></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label for="robos">Robos</label>
+                    <textarea id="robos" name="robos" rows="3"></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label for="otrasObservaciones">Otras Observaciones</label>
+                    <textarea id="otrasObservaciones" name="otrasObservaciones" rows="3"></textarea>
+                </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Guardar Mercancía
+                </button>
+                <button type="reset" class="btn btn-secondary">
+                    <i class="fas fa-undo"></i> Limpiar Formulario
+                </button>
+                <a href="lista.html" class="btn btn-info">
+                    <i class="fas fa-list"></i> Ver Lista
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
